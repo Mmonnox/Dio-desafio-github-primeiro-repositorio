@@ -1,0 +1,1 @@
+Gut Bash é um termminal estendido para otimizar o uso do Git
