@@ -1,1 +1,77 @@
 Git Bash é um termminal estendido para otimizar o uso do Git
+
+CRIANDO E ENVIANDO UM ARQUIVO PARA O REPOSITÓRIO DO GITHUB
+
+- Abra o Git Bash na pasta criada para o projeto, no meu caso o aqueivo é .txt
+- Agora, transformo essa minha pasta em um repositório Git.
+- Pra isso, basta digitar git init e dar enter: 
+- Ele diz que iniciou um repositório vazio nessa pasta. Como eu sei que agora tenho um repositório nessa pasta?
+- Ele você abrir a pasta no File Explorer e configurar ele para mostrar os arquivos ocultos, verá que tem uma pasta 
+a mais chamada .git
+- O Git usa essa pasta pra controlar as alterações feitas no repositório.
+- Agora tenho um repositório na máquina e um no Github...como sincronizar os dois?
+
+ADICIONANDO UMA ORIGIN
+
+-COMANDO= git remote add origin e o link do repositório: git@github.com...
+-Basicamente o que é dito na linha de comando é:
+"Git, esse meu repositório local se conectará com um remoto,
+ o caminho dele(origin) é git@github.com:... Estabeleça essa comunicação pra mim".
+
+- Abrir a pasta .git e abrir o arquivo chamado config lá dentro, verá a seguinte linha:
+[remote "origin"]
+    url = git@github.com:gabsferreira/postsdoblog.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+
+- É onde está configurada a origin.
+
+ENVIANDO ALTERAÇÕES ARA O GITHUB
+
+- Quando estou dentro de uma pasta que é um repositório Git e quero saber o que eu fiz de alterações,
+ eu digito o seguinte comando:
+
+git status
+
+- Esse comando é um dos mais usados no Git.
+- Ele irá mostrar:
+
+On branch master
+
+Initial commit
+
+Untracked files:  
+  (use "git add <file>..." to include in what will be committed)
+
+        Post.txt
+
+nothing added to commit but untracked files present (use "git add" to track)  
+
+- Ele diz que o arquivo ....txt está untracked, ou seja, não está sendo 
+monitorado/gerenciado pelo Git. Quero que ele seja!
+Então:
+
+git add (nome do arquivo).txt   
+
+- Com esse comando, eu adicionei o meu arquivo ao Git. Se eu der git status de novo:
+
+$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:  
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   Post.txt
+
+- Agora ele me mostra que o arquivo está para ser comitado. Ou seja, ele ainda 
+não guardou o estado do arquivo permanentemente, é só temporário.
+- Se eu quiser que seja permantente, uso o git commit:
+
+git commit -m "aqui coloco uma mensagem, tipo: comitando primeiro post"  
+
+- oK,Comitado!!
+- Agora quero enviar para o meu repositório remoto:
+
+git push -u origin master  
+Se for até o repositório no Github a
